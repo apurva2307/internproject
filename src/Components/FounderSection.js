@@ -1,11 +1,15 @@
 import React, { useRef, useEffect, useState } from "react";
 import image1 from "./Images/founder/1.jpg";
-import image2 from "./Images/featured/2.jpg";
-import image3 from "./Images/featured/3.jpg";
-import image4 from "./Images/featured/4.jpg";
-import image5 from "./Images/featured/5.jpg";
-import image6 from "./Images/featured/6.jpg";
-import image7 from "./Images/featured/7.jpg";
+import image2 from "./Images/founder/2.jpg";
+import image3 from "./Images/founder/3.jpg";
+import image4 from "./Images/founder/4.jpg";
+import image5 from "./Images/founder/5.jpg";
+import image6 from "./Images/founder/6.jpg";
+import image7 from "./Images/founder/7.jpg";
+import image8 from "./Images/founder/8.jpg";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
 
 const FounderSection = () => {
   const crousalRef = useRef(null);
@@ -17,26 +21,24 @@ const FounderSection = () => {
     image5,
     image6,
     image7,
+    image8,
   ];
   const [index, setIndex] = useState(0);
   const [images, setImages] = useState(initialImages);
   useEffect(() => {
     const interval = setInterval(() => {
-      const featuresImg = document.querySelectorAll(".featured-img2");
-      featuresImg.forEach((img) => {
-        img.classList.add("image-slider");
-      });
-      images.push(images[0]);
-      images.shift();
-      console.log(images);
-      setImages(images);
-      console.log("hi");
-      featuresImg.forEach((img) => {
-        img.classList.remove("image-slider");
-      });
+      if (index == 7) {
+        setIndex(0);
+        console.log("7", index);
+      } else {
+        setIndex(index + 1);
+        console.log(index);
+      }
     }, 1000);
     return () => clearInterval(interval);
-  }, [images]);
+  }, [index]);
+  console.log("index", index);
+
   return (
     <>
       <div className="featured-services-section" style={{ overflow: "hidden" }}>
@@ -46,9 +48,13 @@ const FounderSection = () => {
           ref={crousalRef}
         >
           {images.map((image, ind) => {
+            let slider = "";
+            if (index === ind || index + 1 === ind || index + 2 === ind) {
+              slider = "image-slider";
+            } else slider = "";
             return (
-              <div className="featured-img2" key={ind.toString()}>
-                <img src={image} alt="image1" width="200%" />
+              <div className={`featured-img2 ${slider}`} key={ind.toString()}>
+                <img src={image} alt="image1" width="100%" />
               </div>
             );
           })}

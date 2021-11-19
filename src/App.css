@@ -897,8 +897,10 @@ header::after {
 }
 
 .featured-img2 {
-  flex-basis: 33%;
+  flex-basis: 33.33%;
+  transition: all 0.5 ease;
+  transform: translateX(0%);
 }
 .image-slider {
-  transform: translateX(-33%);
+  transform: translateX(-100%);
 }
