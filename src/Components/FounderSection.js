@@ -31,15 +31,12 @@ const FounderSection = () => {
     const interval = setInterval(() => {
       if (index == 7) {
         setIndex(0);
-        console.log("7", index);
       } else {
         setIndex(index + 1);
-        console.log(index);
       }
     }, 1000);
     return () => clearInterval(interval);
   }, [index]);
-  console.log("index", index);
 
   return (
     <>
@@ -49,17 +46,36 @@ const FounderSection = () => {
       >
         <div
           className="featured-img-container"
-          style={{ flexShrink: 0, width: "266.7%", margin: "0 0" }}
+          style={{ flexShrink: 0, width: "100%", margin: "0 0" }}
           ref={crousalRef}
         >
           {images.map((image, ind) => {
+            console.log("ind:", ind);
             let slider = "";
-            if (index === ind || index + 1 === ind || index + 2 === ind) {
+            let showSlide = "";
+
+            if (
+              index < images.length - 2 &&
+              (index + 3 === ind || index + 1 === ind || index + 2 === ind)
+            ) {
+              showSlide = "featured-img2";
+            } else if (
+              index === images.length - 2 &&
+              (ind === 1 || index + 1 === ind || ind === 0)
+            ) {
+              showSlide = "featured-img2";
+            } else if (
+              index === images.length - 1 &&
+              (ind === 2 || ind === 0 || ind === 1)
+            ) {
+              showSlide = "featured-img2";
+            } else showSlide = "noShow";
+            if (index === ind) {
               slider = "image-slider";
-            } else slider = "";
+            }
             return (
-              <div className={`featured-img2 ${slider}`} key={ind.toString()}>
-                <img src={image} alt="image1" width="100%" />
+              <div className={`${showSlide} ${slider}`} key={ind.toString()}>
+                <img src={image} alt="image1" style={{ width: "100%" }} />
               </div>
             );
           })}
