@@ -7,6 +7,8 @@ import image5 from "./Images/founder/5.jpg";
 import image6 from "./Images/founder/6.jpg";
 import image7 from "./Images/founder/7.jpg";
 import image8 from "./Images/founder/8.jpg";
+import face from "./Images/founder/face.jpg";
+import linkedin from "./Images/founder/linkedin.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
@@ -41,10 +43,13 @@ const FounderSection = () => {
 
   return (
     <>
-      <div className="featured-services-section" style={{ overflow: "hidden" }}>
+      <div
+        className="featured-services-section"
+        style={{ overflow: "hidden", padding: "0% 0%" }}
+      >
         <div
           className="featured-img-container"
-          style={{ flexShrink: 0, width: "266.7%" }}
+          style={{ flexShrink: 0, width: "266.7%", margin: "0 0" }}
           ref={crousalRef}
         >
           {images.map((image, ind) => {
@@ -77,6 +82,38 @@ const FounderSection = () => {
           <div className="featured-img2">
             <img src={images[index + 6]} alt="image1" width="100%" />
           </div> */}
+        </div>
+        <div
+          className="container-3"
+          style={{
+            backgroundImage: `linear-gradient(to right, rgba(130, 218, 222, 0.75), rgba(130, 218, 222, .75)), url(${image2})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+        >
+          <div className="box">
+            <div className="imageBox">
+              <img src={face} style={{ width: "100%" }} />
+            </div>
+            <div className="in">
+              <img src={linkedin} style={{ width: "100%" }} />
+            </div>
+            <h3 style={{ fontStyle: "italic" }}>Note from our founder</h3>
+            <p>
+              I’m Richard Tiland, president of New Evolution Video and
+              dk3studios.
+            </p>
+            <p>
+              Over the last 15 years I’ve learned not only the skills required
+              for making high quality videos, but the marketing techniques to
+              bring in the best results. I want to bring your company the same
+              mind blowing results I’ve got for 100’s of New Evolution clients.
+            </p>
+            <p>Contact me today – talk is free!</p>
+            <button className="our-services-btn" style={{ width: "12rem" }}>
+              Request A Meeting
+            </button>
+          </div>
         </div>
       </div>
     </>
