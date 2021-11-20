@@ -10,6 +10,7 @@ import Footer from "./Components/Footer";
 import VideoServices from "./Components/Video-prod-services";
 import FeaturedServices from "./Components/FeaturedServices";
 import FounderSection from "./Components/FounderSection";
+import Slider from "./Components/Slider";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
             <VideoGallery />
             <VideoServices />
             <FeaturedServices />
+            <Slider />
             <FounderSection />
           </Route>
           <Route exact path="/products">
